@@ -1,0 +1,31 @@
+<header class="fixed-top">
+  <!-- <fa-icon [icon]="faBars" (click)="toggle()"></fa-icon> -->
+  <!-- <ng-content select='.header'></ng-content> -->
+  <app-header></app-header>
+</header>
+<main>
+
+  <div class="shadow position-fixed">
+  </div>
+
+  <aside>
+    <div class="scroller">
+      <!-- <ng-content select=".nav"></ng-content> -->
+      <app-nav></app-nav>
+    </div>
+  </aside>
+
+  <div class="page">
+
+    <div class="contents">
+      <!-- <ng-content select=".content"></ng-content> -->
+    </div>
+
+    <footer>
+      <!-- <ng-content select=".footer"></ng-content> -->
+      <app-footer></app-footer>
+    </footer>
+
+  </div>
+
+</main>

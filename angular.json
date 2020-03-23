@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1, 
+  "version": 1,
   "newProjectRoot": "projects",
   "projects": {
     "crm-ennov": {
@@ -30,7 +30,12 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/stylings/"
+              ]
+            }
           },
           "configurations": {
             "production": {
@@ -123,6 +128,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "crm-ennov"
+    }
+  },
+  "defaultProject": "crm-ennov",
+  "cli": {
+    "analytics": "01524918-bdec-4982-8a0e-7f588c567c10"
+  }
 }
