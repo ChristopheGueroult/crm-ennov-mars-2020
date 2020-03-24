@@ -2,7 +2,7 @@
 ✔ architecture d'une appli angular @done(20-03-23 16:14)
 ✔ montrer l'appli @done(20-03-23 16:14)
 ✔ recap journée d'hier @done(20-03-24 08:15)
-☐ transclusion avec ng-content
-☐ life cycles
+✔ transclusion avec ng-content @done(20-03-24 10:02)
+✔ life cycles @done(20-03-24 10:36)
 ☐ modules de l'appli
 ☐ pages de l'appli (agilite et perf)

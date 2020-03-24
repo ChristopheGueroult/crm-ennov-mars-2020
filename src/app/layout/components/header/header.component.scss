@@ -1,1 +1,13 @@
 
+@import 'theme';
+@import 'fonts';
+
+h1 {
+  color: $color3;
+  font-size: $h2-fz;
+  text-align: center;
+}
+
+:host {
+  width: 100%;
+}
