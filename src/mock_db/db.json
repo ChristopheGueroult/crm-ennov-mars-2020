@@ -1,0 +1,48 @@
+{
+  "prestations": [
+    {
+      "id": 1,
+      "typePresta": "Coaching",
+      "client": "Modis",
+      "tjmHt": 1200,
+      "nbJours": 10,
+      "tva": 20,
+      "state": "Confirmé",
+      "comment": "Merci Modis pour les 1.2k jour"
+    },
+    {
+      "typePresta": "coaching",
+      "client": "tonton",
+      "tjmHt": 1200,
+      "nbJours": 1,
+      "tva": 20,
+      "state": "Option",
+      "comment": "merci tonton",
+      "id": 3
+    },
+    {
+      "typePresta": "formation",
+      "client": "tata",
+      "tjmHt": 1200,
+      "nbJours": 1,
+      "tva": 20,
+      "state": "Option",
+      "comment": "merci tata",
+      "id": 4
+    }
+  ],
+  "clients": [
+    {
+      "id": 3,
+      "name": "Christophe",
+      "email": "christophe@gmail.com",
+      "state": "Actif"
+    },
+    {
+      "id": 4,
+      "name": "Chris",
+      "email": "chris@gmail.com",
+      "state": "Actif"
+    }
+  ]
+}
