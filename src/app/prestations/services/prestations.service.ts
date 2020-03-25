@@ -4,6 +4,7 @@ import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { StatePrestation } from 'src/app/shared/enums/state-prestation.enum';
 
 @Injectable({
   providedIn: 'root'
@@ -32,8 +33,16 @@ export class PrestationsService {
   }
 
   // update item state
+  changeState(item: Prestation, state: StatePrestation) {
+    const newItem = new Prestation({...item});
+    newItem.state = state;
+    return this.update(newItem);
+  }
 
   // update item
+  update(item: Prestation) {
+    return this.http.patch<Prestation>(`${this.urlApi}prestations/${item.id}`, item);
+  }
 
   // add item
 
