@@ -1,25 +1,22 @@
-<div class="table-responsive">
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col" *ngFor="let item of headers">{{ item }}</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let itemNikki of collection">
-        <td>{{ itemNikki.typePresta }}</td>
-        <td>{{ itemNikki.client }}</td>
-        <td>{{ itemNikki.nbJours }}</td>
-        <td>{{ itemNikki.tjmHt | currency: 'EUR' }}</td>
-        <td>{{ itemNikki | total | currency: 'EUR' }}</td>
-        <td>{{ itemNikki | total: 'ttc' | currency: 'EUR' }}</td>
-        <td [appState]="itemNikki.state">
-          <select (change)="changeState(itemNikki, $event)">
-            <!-- <option *ngFor="let state of states | keyvalue" [value]="state.key">{{ state.value }}</option> -->
-            <option *ngFor="let state of states"  [value]="state" [selected]="state === itemNikki.state">{{ state }}</option>
-          </select>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+<app-template-a [title]="titre" [subtitle]="soustitre">
+
+  <app-tableau-dark [headers]="headers">
+
+    <tr *ngFor="let itemNikki of collection$ | async">
+      <td>{{ itemNikki.typePresta }}</td>
+      <td>{{ itemNikki.client }}</td>
+      <td>{{ itemNikki.nbJours }}</td>
+      <td>{{ itemNikki.tjmHt | currency: 'EUR' }}</td>
+      <td>{{ itemNikki | total | currency: 'EUR' }}</td>
+      <td>{{ itemNikki | total: 'ttc' | currency: 'EUR' }}</td>
+      <td [appState]="itemNikki.state">
+        <select (change)="changeState(itemNikki, $event)">
+          <option *ngFor="let state of states" [value]="state" [selected]="state === itemNikki.state">{{ state }}
+          </option>
+        </select>
+      </td>
+    </tr>
+
+  </app-tableau-dark>
+
+</app-template-a>

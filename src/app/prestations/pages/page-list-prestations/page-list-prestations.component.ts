@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PrestationsService } from '../../services/prestations.service';
 import { Prestation } from 'src/app/shared/models/prestation';
 import { StatePrestation } from 'src/app/shared/enums/state-prestation.enum';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-page-list-prestations',
@@ -9,17 +10,15 @@ import { StatePrestation } from 'src/app/shared/enums/state-prestation.enum';
   styleUrls: ['./page-list-prestations.component.scss']
 })
 export class PageListPrestationsComponent implements OnInit {
-  public collection: Prestation[];
+  public collection$: Observable<Prestation[]>;
   public headers: string[];
-  // public states = StatePrestation;
+  public titre: string;
+  public soustitre: string;
   public states = Object.values(StatePrestation);
   constructor(private ps: PrestationsService) { }
 
   ngOnInit(): void {
-    this.ps.collection.subscribe((datas) => {
-      this.collection = datas;
-      console.log(this.collection);
-    });
+    this.collection$ = this.ps.collection;
     this.headers = [
       'Type',
       'Client',
@@ -29,6 +28,8 @@ export class PageListPrestationsComponent implements OnInit {
       'Total TTC',
       'State'
     ];
+    this.titre = 'Prestations';
+    this.soustitre = 'Toutes les prestations';
   }
 
   changeState(item: Prestation, e) {

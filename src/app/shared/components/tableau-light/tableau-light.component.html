@@ -1,0 +1,14 @@
+<div class="table-responsive">
+  <table class="table" id="table-light">
+    <thead>
+      <tr>
+        <th scope="col" *ngFor="let item of headers">{{ item }}</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <ng-content></ng-content>
+
+    </tbody>
+  </table>
+</div>
