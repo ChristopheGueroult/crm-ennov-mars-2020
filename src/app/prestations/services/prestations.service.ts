@@ -3,6 +3,7 @@ import { Prestation } from 'src/app/shared/models/prestation';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,13 @@ export class PrestationsService {
   private pCollection: Observable<Prestation[]>;
   private urlApi = environment.urlApi;
   constructor(private http: HttpClient) {
-    this.collection = this.http.get<Prestation[]>(`${this.urlApi}prestations`);
+    this.collection = this.http.get<Prestation[]>(`${this.urlApi}prestations`).pipe(
+      map((tab) => {
+        return tab.map((obj) => {
+          return new Prestation(obj);
+        });
+      })
+    );
   }
 
   // get collection

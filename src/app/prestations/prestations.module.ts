@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { SharedModule } from '../shared/shared.module';
 import { PageListPrestationsComponent } from './pages/page-list-prestations/page-list-prestations.component';
 import { PrestationsRoutingModule } from './prestations-routing.module';
-import { PrestationsService } from './services/prestations.service';
 
 
 
@@ -10,7 +10,8 @@ import { PrestationsService } from './services/prestations.service';
   declarations: [PageListPrestationsComponent],
   imports: [
     CommonModule,
-    PrestationsRoutingModule
+    PrestationsRoutingModule,
+    SharedModule
   ]
 })
 export class PrestationsModule { }

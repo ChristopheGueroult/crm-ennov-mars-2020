@@ -4,5 +4,13 @@
 ✔ recap journée d'hier @done(20-03-24 08:15)
 ✔ transclusion avec ng-content @done(20-03-24 10:02)
 ✔ life cycles @done(20-03-24 10:36)
-☐ modules de l'appli
-☐ pages de l'appli (agilite et perf)
+✔ modules de l'appli @done(20-03-24 16:04)
+✔ pages de l'appli (agilite et perf) @done(20-03-24 16:04)
+✔ enum, interface, model @done(20-03-24 16:06)
+✔ api json server @done(20-03-24 16:06)
+✔ service presta avec http et observable @done(20-03-24 16:06)
+✔ récap de la veille @done(20-03-25 08:26)
+☐ pipe json, currency, LOCALID, pipes personnalisés
+☐ directives et directive personnalisés
+☐ appels de fonction dans html (bonnes pratiques)
+☐ components stupides et dynamiques
