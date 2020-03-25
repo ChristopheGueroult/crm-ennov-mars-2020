@@ -13,7 +13,7 @@
         <td>{{ itemNikki.tjmHt | currency: 'EUR' }}</td>
         <td>{{ itemNikki | total | currency: 'EUR' }}</td>
         <td>{{ itemNikki | total: 'ttc' | currency: 'EUR' }}</td>
-        <td>
+        <td [appState]="itemNikki.state">
           <select (change)="changeState(itemNikki, $event)">
             <!-- <option *ngFor="let state of states | keyvalue" [value]="state.key">{{ state.value }}</option> -->
             <option *ngFor="let state of states"  [value]="state" [selected]="state === itemNikki.state">{{ state }}</option>

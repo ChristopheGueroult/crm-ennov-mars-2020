@@ -32,7 +32,6 @@ export class PageListPrestationsComponent implements OnInit {
   }
 
   changeState(item: Prestation, e) {
-    console.log(e.target.value);
     this.ps.changeState(item, e.target.value).subscribe((res) => {
       item.state = res.state;
     });
