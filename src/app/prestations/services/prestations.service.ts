@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { Prestation } from 'src/app/shared/models/prestation';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, throwError } from 'rxjs';
+import { map, retry, catchError } from 'rxjs/operators';
 import { StatePrestation } from 'src/app/shared/enums/state-prestation.enum';
 
 @Injectable({
@@ -34,17 +34,39 @@ export class PrestationsService {
 
   // update item state
   changeState(item: Prestation, state: StatePrestation) {
-    const newItem = new Prestation({...item});
+    const newItem = new Prestation({ ...item });
     newItem.state = state;
     return this.update(newItem);
   }
 
   // update item
   update(item: Prestation) {
-    return this.http.patch<Prestation>(`${this.urlApi}prestations/${item.id}`, item);
+    return this.http.patch<Prestation>(`${this.urlApi}prestations/${item.id}`, item).pipe(
+      retry(1),
+      catchError(this.handleError)
+    );
   }
 
   // add item
+  public add(item: Prestation) {
+    return this.http.post<Prestation>(`${this.urlApi}prestations`, item).pipe(
+      retry(1),
+      catchError(this.handleError)
+    );
+  }
+
+  private handleError(error) {
+    let errorMessage = '';
+    if (error.error instanceof ErrorEvent) {
+      // client-side error
+      errorMessage = `Error: ${error.error.message}`;
+    } else {
+      // server-side error
+      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+    }
+    console.log(errorMessage);
+    return throwError(errorMessage);
+  }
 
   // delete item
 

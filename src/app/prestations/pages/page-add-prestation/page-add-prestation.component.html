@@ -1,1 +1,7 @@
-<p>page-add-prestation works!</p>
+<app-template-a [title]="titre" [subtitle]="soustitre">
+
+  <div class="container">
+    <app-form-presta (nItem)="add($event)"></app-form-presta>
+  </div>
+
+</app-template-a>
