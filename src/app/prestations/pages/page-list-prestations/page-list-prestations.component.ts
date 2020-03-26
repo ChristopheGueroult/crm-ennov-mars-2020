@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { PrestationsService } from '../../services/prestations.service';
-import { Prestation } from 'src/app/shared/models/prestation';
-import { StatePrestation } from 'src/app/shared/enums/state-prestation.enum';
+import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
+import { StatePrestation } from 'src/app/shared/enums/state-prestation.enum';
+import { Prestation } from 'src/app/shared/models/prestation';
+import { PrestationsService } from '../../services/prestations.service';
 
 @Component({
   selector: 'app-page-list-prestations',
@@ -15,7 +16,10 @@ export class PageListPrestationsComponent implements OnInit {
   public titre: string;
   public soustitre: string;
   public states = Object.values(StatePrestation);
-  constructor(private ps: PrestationsService) { }
+  constructor(
+    private ps: PrestationsService,
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
     this.collection$ = this.ps.collection;
@@ -28,8 +32,10 @@ export class PageListPrestationsComponent implements OnInit {
       'Total TTC',
       'State'
     ];
-    this.titre = 'Prestations';
-    this.soustitre = 'Toutes les prestations';
+    this.route.data.subscribe((datas) => {
+      this.titre = datas.title;
+      this.soustitre = datas.subtitle;
+    });
   }
 
   changeState(item: Prestation, e) {
