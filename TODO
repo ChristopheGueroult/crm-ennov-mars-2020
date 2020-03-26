@@ -14,7 +14,7 @@
 ✔ directives et directive personnalisés @done(20-03-26 08:09)
 ✔ appels de fonction dans html (bonnes pratiques) @done(20-03-25 11:42)
 ✔ components stupides et dynamiques @done(20-03-26 08:09)
-☐ data dans router
-☐ components stupides encapsulés avec styles selon template
+✔ data dans router @done(20-03-26 08:47)
+✔ components stupides encapsulés avec styles selon template @done(20-03-26 09:44)
 ☐ @Output() ex avec btn
 ☐ formulaires
