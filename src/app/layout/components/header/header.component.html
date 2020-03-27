@@ -1,1 +1,1 @@
-<h1>{{ title }}</h1>
+<h1><span *ngIf="version$ | async as version">v.{{ version }} </span>{{ title }}</h1>
