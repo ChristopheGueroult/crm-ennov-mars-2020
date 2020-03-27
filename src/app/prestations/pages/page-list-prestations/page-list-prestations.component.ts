@@ -82,4 +82,8 @@ export class PageListPrestationsComponent implements OnInit {
     this.router.navigate(['prestations', 'edit', item.id]);
   }
 
+  public detail(item: Prestation) {
+    this.ps.item$.next(item);
+  }
+
 }

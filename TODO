@@ -20,7 +20,7 @@
 ✔ formulaires @done(20-03-26 16:02)
 ✔ delete d'une prestation @done(20-03-27 09:14)
 ✔ edit prestation (route avec id dans url ) operateur switchmap rxjs @done(20-03-27 11:15)
-☐ example de BehaviorSubject = > difference entre l'injection en private et en public (afficher n° version)
+✔ example de BehaviorSubject = > difference entre l'injection en private et en public (afficher n° version) @done(20-03-27 11:40)
 ☐ evaluation formateur en ligne
 ☐ example route enfants avec une sous navigation dans la page list prestations Subject and BehaviorSubject
 ☐ demo revendeur site web
