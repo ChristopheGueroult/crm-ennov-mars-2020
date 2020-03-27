@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { Prestation } from 'src/app/shared/models/prestation';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { map, retry, catchError } from 'rxjs/operators';
+import { Observable, throwError, BehaviorSubject } from 'rxjs';
+import { map, retry, catchError, tap } from 'rxjs/operators';
 import { StatePrestation } from 'src/app/shared/enums/state-prestation.enum';
 
 @Injectable({
@@ -13,6 +13,7 @@ export class PrestationsService {
   private pCollection: Observable<Prestation[]>;
   private urlApi = environment.urlApi;
   constructor(private http: HttpClient) {
+    // this.collection = this.http.get<Prestation[]>(`${this.urlApi}prestations?_expand=client`).pipe(
     this.collection = this.http.get<Prestation[]>(`${this.urlApi}prestations`).pipe(
       map((tab) => {
         return tab.map((obj) => {
@@ -33,7 +34,7 @@ export class PrestationsService {
   }
 
   // update item state
-  changeState(item: Prestation, state: StatePrestation) {
+  public changeState(item: Prestation, state: StatePrestation) {
     const newItem = new Prestation({ ...item });
     newItem.state = state;
     return this.update(newItem);
@@ -69,6 +70,13 @@ export class PrestationsService {
   }
 
   // delete item
+  // add item
+  public delete(item: Prestation) {
+    return this.http.delete<Prestation>(`${this.urlApi}prestations/${item.id}`).pipe(
+      retry(1),
+      catchError(this.handleError)
+    );
+  }
 
   // get item by id
 }

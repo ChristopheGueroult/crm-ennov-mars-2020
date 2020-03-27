@@ -4,6 +4,7 @@
 
     <tr *ngFor="let itemNikki of collection$ | async">
       <td>{{ itemNikki.typePresta }}</td>
+      <!-- <td>{{ itemNikki.client['name'] }}</td> -->
       <td>{{ itemNikki.client }}</td>
       <td>{{ itemNikki.nbJours }}</td>
       <td>{{ itemNikki.tjmHt | currency: 'EUR' }}</td>
@@ -14,6 +15,9 @@
           <option *ngFor="let state of states" [value]="state" [selected]="state === itemNikki.state">{{ state }}
           </option>
         </select>
+      </td>
+      <td>
+        <app-icon-trash (click)="delete(itemNikki)"></app-icon-trash>
       </td>
     </tr>
 

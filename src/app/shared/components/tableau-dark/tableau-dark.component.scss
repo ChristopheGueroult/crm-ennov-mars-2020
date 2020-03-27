@@ -2,13 +2,13 @@
 
 #table-dark {
 
-  .state-annule {
+  .state-annule, .state-inactif {
     background: $color-error;
   }
   .state-option {
     background: $color3;
   }
-  .state-confirme {
+  .state-confirme, .state-actif {
     background: $color-success;
   }
 
