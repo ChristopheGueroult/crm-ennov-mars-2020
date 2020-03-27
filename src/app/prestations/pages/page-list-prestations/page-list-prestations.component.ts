@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Observable, BehaviorSubject, Subject } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Subject } from 'rxjs';
 import { StatePrestation } from 'src/app/shared/enums/state-prestation.enum';
 import { BtnAction } from 'src/app/shared/interfaces/btn-action';
 import { BtnHref } from 'src/app/shared/interfaces/btn-href';
@@ -24,7 +24,8 @@ export class PageListPrestationsComponent implements OnInit {
   public btnAction: BtnAction;
   constructor(
     private ps: PrestationsService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -75,6 +76,10 @@ export class PageListPrestationsComponent implements OnInit {
         this.collection$.next(col);
       });
     });
+  }
+
+  public edit(item: Prestation) {
+    this.router.navigate(['prestations', 'edit', item.id]);
   }
 
 }

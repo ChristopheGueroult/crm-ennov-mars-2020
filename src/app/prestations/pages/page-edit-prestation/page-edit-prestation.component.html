@@ -1,0 +1,7 @@
+<app-template-a [title]="titre" [subtitle]="soustitre">
+
+  <div class="container">
+    <app-form-presta *ngIf="item$ | async as item" [item]="item" (nItem)="update($event)"></app-form-presta>
+  </div>
+
+</app-template-a>

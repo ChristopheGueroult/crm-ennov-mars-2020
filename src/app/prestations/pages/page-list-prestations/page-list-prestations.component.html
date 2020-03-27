@@ -2,7 +2,7 @@
 
   <app-tableau-dark [headers]="headers">
 
-    <tr *ngFor="let itemNikki of collection$ | async">
+    <tr *ngFor="let itemNikki of collection$ | async" (click)="edit(itemNikki)">
       <td>{{ itemNikki.typePresta }}</td>
       <!-- <td>{{ itemNikki.client['name'] }}</td> -->
       <td>{{ itemNikki.client }}</td>
@@ -11,13 +11,13 @@
       <td>{{ itemNikki | total | currency: 'EUR' }}</td>
       <td>{{ itemNikki | total: 'ttc' | currency: 'EUR' }}</td>
       <td [appState]="itemNikki.state">
-        <select (change)="changeState(itemNikki, $event)">
+        <select (change)="changeState(itemNikki, $event)" (click)="$event.stopPropagation()">
           <option *ngFor="let state of states" [value]="state" [selected]="state === itemNikki.state">{{ state }}
           </option>
         </select>
       </td>
       <td>
-        <app-icon-trash (click)="delete(itemNikki)"></app-icon-trash>
+        <app-icon-trash (click)="$event.stopPropagation(); delete(itemNikki)"></app-icon-trash>
       </td>
     </tr>
 

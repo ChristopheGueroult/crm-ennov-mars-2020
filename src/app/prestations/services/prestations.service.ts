@@ -41,7 +41,7 @@ export class PrestationsService {
   }
 
   // update item
-  update(item: Prestation) {
+  update(item: Prestation): Observable<Prestation> {
     return this.http.patch<Prestation>(`${this.urlApi}prestations/${item.id}`, item).pipe(
       retry(1),
       catchError(this.handleError)
@@ -49,7 +49,7 @@ export class PrestationsService {
   }
 
   // add item
-  public add(item: Prestation) {
+  public add(item: Prestation): Observable<Prestation> {
     return this.http.post<Prestation>(`${this.urlApi}prestations`, item).pipe(
       retry(1),
       catchError(this.handleError)
@@ -70,8 +70,7 @@ export class PrestationsService {
   }
 
   // delete item
-  // add item
-  public delete(item: Prestation) {
+  public delete(item: Prestation): Observable<Prestation> {
     return this.http.delete<Prestation>(`${this.urlApi}prestations/${item.id}`).pipe(
       retry(1),
       catchError(this.handleError)
@@ -79,4 +78,10 @@ export class PrestationsService {
   }
 
   // get item by id
+  public getItemById(id: string): Observable<Prestation> {
+    return this.http.get<Prestation>(`${this.urlApi}prestations/${id}`).pipe(
+      retry(1),
+      catchError(this.handleError)
+    );
+  }
 }
